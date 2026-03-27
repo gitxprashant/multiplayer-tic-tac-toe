@@ -12,6 +12,6 @@ nakama \
 --logger.level DEBUG \
 --session.token_expiry_sec 7200 \
 --socket.address 0.0.0.0 \
---socket.port ${PORT} \
+--socket.port 7350 \
 --server_key defaultkey \
 "]
