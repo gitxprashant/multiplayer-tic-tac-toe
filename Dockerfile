@@ -6,8 +6,8 @@ EXPOSE 7350
 
 ENTRYPOINT ["sh", "-c", "\
 echo 'DB URL:' $DATABASE_URL && \
-nakama migrate up --database.address \"$DATABASE_URL\" && \
-nakama \
+/nakama/nakama migrate up --database.address \"$DATABASE_URL\" && \
+/nakama/nakama \
 --name nakama1 \
 --database.address \"$DATABASE_URL\" \
 --logger.level DEBUG \
