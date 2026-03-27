@@ -5,13 +5,14 @@ COPY modules /nakama/data/modules
 EXPOSE 7350
 
 CMD ["sh", "-c", "\
-nakama migrate up --database.address postgres://postgres:cxdOBpxSSLlJQNPqbkmczoyHwledehEs@postgres.railway.internal:5432/railway && \
+echo 'Using DB:' $DATABASE_URL && \
+nakama migrate up --database.address \"$DATABASE_URL\" && \
 nakama \
 --name nakama1 \
---database.address postgres://postgres:cxdOBpxSSLlJQNPqbkmczoyHwledehEs@postgres.railway.internal:5432/railway \
+--database.address \"$DATABASE_URL\" \
 --logger.level DEBUG \
 --session.token_expiry_sec 7200 \
 --socket.address 0.0.0.0 \
---socket.port ${PORT} \
+--socket.port 7350 \
 --server_key defaultkey \
 "]
