@@ -4,8 +4,8 @@ COPY modules /nakama/data/modules
 
 EXPOSE 7350
 
-CMD ["sh", "-c", "\
-echo 'Using DB:' $DATABASE_URL && \
+ENTRYPOINT ["sh", "-c", "\
+echo 'DB URL:' $DATABASE_URL && \
 nakama migrate up --database.address \"$DATABASE_URL\" && \
 nakama \
 --name nakama1 \
