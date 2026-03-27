@@ -4,4 +4,4 @@ COPY modules /nakama/data/modules
 
 EXPOSE 7350
 
-CMD ["nakama", "--name", "nakama1", "--database.address", "postgres:${PGUSER}:${PGPASSWORD}@${PGHOST}:${PGPORT}/${PGDATABASE}", "--logger.level", "DEBUG", "--session.token_expiry_sec", "7200", "--socket.port", "${PORT}", "--socket.address", "0.0.0.0"]
+CMD ["sh", "-c", "nakama migrate up --database.address postgres://${PGUSER}:${PGPASSWORD}@${PGHOST}:${PGPORT}/${PGDATABASE} && nakama --name nakama1 --database.address postgres://${PGUSER}:${PGPASSWORD}@${PGHOST}:${PGPORT}/${PGDATABASE} --logger.level DEBUG --session.token_expiry_sec 7200 --socket.port ${PORT} --socket.address 0.0.0.0"]
